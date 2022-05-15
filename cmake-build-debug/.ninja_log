@@ -1,0 +1,4 @@
+# ninja log v5
+1	98	6743280046392163	CMakeFiles/TEST_C_MAIN.dir/run_app.c.obj	fc9aba374ab03dd8
+12	110	6743280046522279	CMakeFiles/TEST_C_MAIN.dir/test_c/test.c.obj	d3bc696cdd39e6c6
+111	239	6743280047783417	TEST_C_MAIN.exe	4c1159320c23e812

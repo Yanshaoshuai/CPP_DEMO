@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.21)
+project(CPP_DEMO C CXX)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
+# Add header file include directories
+include_directories(./test_c ./c_cpp_mix)
+file(GLOB_RECURSE TEST_C "test_c/*.c")
+file(GLOB_RECURSE MIX_C_CPP  "c_cpp_mix/*.c" "c_cpp_mix/*.cpp")
+add_executable(TEST_C_MAIN run_app.c ${TEST_C})
+add_executable(MIX_C_CALL_CPP c_cpp_mix/run_c.c ${MIX_C_CPP})
+add_executable(MIX_CPP_CALL_C c_cpp_mix/run_c.c ${MIX_C_CPP})
