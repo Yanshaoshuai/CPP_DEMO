@@ -1,4 +1,3 @@
-#include "c_call_cpp.h"
 #include "test_mix_cpp.h"
 #include <stdio.h>
 int main() {
@@ -9,3 +8,4 @@ int main() {
 	printf("c call c++ delta(1,2)=%d\n",result);
 	return 0;
 }
+

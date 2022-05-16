@@ -1,5 +1,0 @@
-E:/File/code/c++/CPP_DEMO/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-E:/File/code/c++/CPP_DEMO/cmake-build-debug/CMakeFiles/TEST_C_MAIN.dir
-E:/File/code/c++/CPP_DEMO/cmake-build-debug/CMakeFiles/MIX_CPP_CALL_C.dir
-E:/File/code/c++/CPP_DEMO/cmake-build-debug/CMakeFiles/MIX_C_CALL_CPP.dir
-E:/File/code/c++/CPP_DEMO/cmake-build-debug/CMakeFiles/edit_cache.dir
