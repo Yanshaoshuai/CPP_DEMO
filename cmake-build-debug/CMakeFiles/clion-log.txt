@@ -1,0 +1,8 @@
+E:\File\soft\jet-brains\apps\CLion\ch-0\213.5744.254\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=E:/File/soft/jet-brains/apps/CLion/ch-0/213.5744.254/bin/ninja/win/ninja.exe -G Ninja E:\File\code\c++\CPP_DEMO
+********MIX_C_CALL_CPP_FILEexclude==>E:/File/code/c++/CPP_DEMO/c_cpp_mix/run_cpp.cpp
+********MIX_CPP_CALL_C_FILEexclude==>E:/File/code/c++/CPP_DEMO/c_cpp_mix/run_c.c
+********MIX_C_CALL_CPP_FILEE:/File/code/c++/CPP_DEMO/c_cpp_mix/run_c.cE:/File/code/c++/CPP_DEMO/c_cpp_mix/test_mix_cpp.cE:/File/code/c++/CPP_DEMO/c_cpp_mix/test_mix_cpp.cpp
+********MIX_CPP_CALL_C_FILEE:/File/code/c++/CPP_DEMO/c_cpp_mix/run_cpp.cppE:/File/code/c++/CPP_DEMO/c_cpp_mix/test_mix_cpp.cE:/File/code/c++/CPP_DEMO/c_cpp_mix/test_mix_cpp.cpp
+-- Configuring done
+-- Generating done
+-- Build files have been written to: E:/File/code/c++/CPP_DEMO/cmake-build-debug
