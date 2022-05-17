@@ -17,6 +17,8 @@
 	#include<math.h>
 	#include<float.h>
 	#include<string.h>
+    #include <time.h>
+    #include<stdlib.h>
     //函数声明
 	void type();
 	void type_len();
@@ -28,6 +30,11 @@
 	void macro();
 	void const_test();
 	void static_test();
-	int foo(int i);
+    void string_test();
+    size_t strlen_source(const char* str);
+    void time_test();
+    void array_test();
+    void pointer_test();
+    void void_and_null();
 #endif // !TEST_H
 

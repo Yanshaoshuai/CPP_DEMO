@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 project(CPP_DEMO C CXX)
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 
 # Add header file include directories
 include_directories(./test_c ./c_cpp_mix)

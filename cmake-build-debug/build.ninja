@@ -63,14 +63,14 @@ build cmake_object_order_depends_target_TEST_C_MAIN: phony || CMakeFiles/TEST_C_
 
 build CMakeFiles/TEST_C_MAIN.dir/run_app.c.obj: C_COMPILER__TEST_C_MAIN_Debug E$:/File/code/c++/CPP_DEMO/run_app.c || cmake_object_order_depends_target_TEST_C_MAIN
   DEP_FILE = CMakeFiles\TEST_C_MAIN.dir\run_app.c.obj.d
-  FLAGS = -g -std=gnu99
+  FLAGS = -g -std=gnu11
   INCLUDES = -IE:/File/code/c++/CPP_DEMO/./test_c -IE:/File/code/c++/CPP_DEMO/./c_cpp_mix
   OBJECT_DIR = CMakeFiles\TEST_C_MAIN.dir
   OBJECT_FILE_DIR = CMakeFiles\TEST_C_MAIN.dir
 
 build CMakeFiles/TEST_C_MAIN.dir/test_c/test.c.obj: C_COMPILER__TEST_C_MAIN_Debug E$:/File/code/c++/CPP_DEMO/test_c/test.c || cmake_object_order_depends_target_TEST_C_MAIN
   DEP_FILE = CMakeFiles\TEST_C_MAIN.dir\test_c\test.c.obj.d
-  FLAGS = -g -std=gnu99
+  FLAGS = -g -std=gnu11
   INCLUDES = -IE:/File/code/c++/CPP_DEMO/./test_c -IE:/File/code/c++/CPP_DEMO/./c_cpp_mix
   OBJECT_DIR = CMakeFiles\TEST_C_MAIN.dir
   OBJECT_FILE_DIR = CMakeFiles\TEST_C_MAIN.dir\test_c
@@ -111,7 +111,7 @@ build CMakeFiles/MIX_CPP_CALL_C.dir/c_cpp_mix/run_cpp.cpp.obj: CXX_COMPILER__MIX
 
 build CMakeFiles/MIX_CPP_CALL_C.dir/c_cpp_mix/test_mix_cpp.c.obj: C_COMPILER__MIX_CPP_CALL_C_Debug E$:/File/code/c++/CPP_DEMO/c_cpp_mix/test_mix_cpp.c || cmake_object_order_depends_target_MIX_CPP_CALL_C
   DEP_FILE = CMakeFiles\MIX_CPP_CALL_C.dir\c_cpp_mix\test_mix_cpp.c.obj.d
-  FLAGS = -g -std=gnu99
+  FLAGS = -g -std=gnu11
   INCLUDES = -IE:/File/code/c++/CPP_DEMO/./test_c -IE:/File/code/c++/CPP_DEMO/./c_cpp_mix
   OBJECT_DIR = CMakeFiles\MIX_CPP_CALL_C.dir
   OBJECT_FILE_DIR = CMakeFiles\MIX_CPP_CALL_C.dir\c_cpp_mix
@@ -152,14 +152,14 @@ build cmake_object_order_depends_target_MIX_C_CALL_CPP: phony || CMakeFiles/MIX_
 
 build CMakeFiles/MIX_C_CALL_CPP.dir/c_cpp_mix/run_c.c.obj: C_COMPILER__MIX_C_CALL_CPP_Debug E$:/File/code/c++/CPP_DEMO/c_cpp_mix/run_c.c || cmake_object_order_depends_target_MIX_C_CALL_CPP
   DEP_FILE = CMakeFiles\MIX_C_CALL_CPP.dir\c_cpp_mix\run_c.c.obj.d
-  FLAGS = -g -std=gnu99
+  FLAGS = -g -std=gnu11
   INCLUDES = -IE:/File/code/c++/CPP_DEMO/./test_c -IE:/File/code/c++/CPP_DEMO/./c_cpp_mix
   OBJECT_DIR = CMakeFiles\MIX_C_CALL_CPP.dir
   OBJECT_FILE_DIR = CMakeFiles\MIX_C_CALL_CPP.dir\c_cpp_mix
 
 build CMakeFiles/MIX_C_CALL_CPP.dir/c_cpp_mix/test_mix_cpp.c.obj: C_COMPILER__MIX_C_CALL_CPP_Debug E$:/File/code/c++/CPP_DEMO/c_cpp_mix/test_mix_cpp.c || cmake_object_order_depends_target_MIX_C_CALL_CPP
   DEP_FILE = CMakeFiles\MIX_C_CALL_CPP.dir\c_cpp_mix\test_mix_cpp.c.obj.d
-  FLAGS = -g -std=gnu99
+  FLAGS = -g -std=gnu11
   INCLUDES = -IE:/File/code/c++/CPP_DEMO/./test_c -IE:/File/code/c++/CPP_DEMO/./c_cpp_mix
   OBJECT_DIR = CMakeFiles\MIX_C_CALL_CPP.dir
   OBJECT_FILE_DIR = CMakeFiles\MIX_C_CALL_CPP.dir\c_cpp_mix
