@@ -36,5 +36,8 @@
     void array_test();
     void pointer_test();
     void void_and_null();
+    void memory_test(int i);
+    void dynamic_arr(int columns,int rows);
+    void string_memory();
 #endif // !TEST_H
 

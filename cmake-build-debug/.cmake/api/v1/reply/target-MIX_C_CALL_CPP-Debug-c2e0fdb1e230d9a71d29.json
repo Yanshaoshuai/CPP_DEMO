@@ -48,7 +48,7 @@
 					"fragment" : "-g"
 				},
 				{
-					"fragment" : "-std=gnu99"
+					"fragment" : "-std=gnu11"
 				}
 			],
 			"includes" : 
@@ -69,7 +69,7 @@
 				[
 					1
 				],
-				"standard" : "99"
+				"standard" : "11"
 			},
 			"sourceIndexes" : 
 			[

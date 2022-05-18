@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "TEST_C_MAIN.exe"
+			"path" : "MIX_CPP_CALL_C.exe"
 		},
 		{
-			"path" : "TEST_C_MAIN.pdb"
+			"path" : "MIX_CPP_CALL_C.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -28,7 +28,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 24,
+				"line" : 26,
 				"parent" : 0
 			},
 			{
@@ -48,7 +48,43 @@
 					"fragment" : "-g"
 				},
 				{
-					"fragment" : "-std=gnu99"
+					"fragment" : "-std=gnu++11"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "E:/File/code/c++/CPP_DEMO/./test_c"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/File/code/c++/CPP_DEMO/./c_cpp_mix"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				2
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu11"
 				}
 			],
 			"includes" : 
@@ -69,16 +105,15 @@
 				[
 					1
 				],
-				"standard" : "99"
+				"standard" : "11"
 			},
 			"sourceIndexes" : 
 			[
-				0,
 				1
 			]
 		}
 	],
-	"id" : "TEST_C_MAIN::@6890427a1f51a3e7e1df",
+	"id" : "MIX_CPP_CALL_C::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -96,10 +131,10 @@
 				"role" : "libraries"
 			}
 		],
-		"language" : "C"
+		"language" : "CXX"
 	},
-	"name" : "TEST_C_MAIN",
-	"nameOnDisk" : "TEST_C_MAIN.exe",
+	"name" : "MIX_CPP_CALL_C",
+	"nameOnDisk" : "MIX_CPP_CALL_C.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -112,7 +147,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2
 			]
 		}
 	],
@@ -121,13 +157,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "run_app.c",
+			"path" : "c_cpp_mix/run_cpp.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "c_cpp_mix/test_mix_cpp.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "test_c/test.c",
+			"path" : "c_cpp_mix/test_mix_cpp.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

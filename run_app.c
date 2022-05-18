@@ -18,6 +18,9 @@ int main() {
 //    time_test();
 //    array_test();
 //    pointer_test();
-    void_and_null();
+//    void_and_null();
+//    memory_test(1);
+//    dynamic_arr(11,11);
+    string_memory();
     return 0;
 }
