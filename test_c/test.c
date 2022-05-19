@@ -5,7 +5,39 @@ int MAX = 100;
 #else
 int MAX = 99;
 #endif
+char* itoa(int val, char* buf, unsigned radix)
+{
+	char* p;
+	char* firstdig;
+	char   temp;
+	unsigned   digval;
+	p = buf;
+	if (val < 0)
+	{
+		*p++ = '-';
+		val = (unsigned long)(-(long)val);
+	}
+	firstdig = p;
+	do {
+		digval = (unsigned)(val % radix);
+		val /= radix;
 
+		if (digval > 9)
+			*p++ = (char)(digval - 10 + 'a');
+		else
+			*p++ = (char)(digval + '0');
+	} while (val > 0);
+
+	*p-- = '\0 ';
+	do {
+		temp = *p;
+		*p = *firstdig;
+		*firstdig = temp;
+		--p;
+		++firstdig;
+	} while (firstdig < p);
+	return buf;
+}
 void type() {
 	int a = 0;
 	double b = 0.11;
@@ -278,8 +310,8 @@ char ga[] = "hello";//hello2保存在静态存储区
 void string_memory() {
 	char* p = "hello";//hello3保存在常量存储区
 	char a[] = "hello";//hello4存储在栈上
-//    p[0]='a';//运行时出错
-//    gp[0]='z';//运行时出错
+	//p[0] = 'a';//运行时出错
+	//gp[0] = 'z';//运行时出错
 
 	printf("p=%s,gp=%s\n", p, gp);
 }
@@ -592,6 +624,7 @@ void dynamic_arr(int columns, int rows) {
 	//1.已知列宽
 	int(*p_two_dim)[3] = (int(*)[3]) calloc(rows * 3, sizeof(int));
 	printf("p_two_dim[10][0]=%d\n", p_two_dim[10][0]);
+	free(p_two_dim);
 	//未知列宽
 	int** array2 = malloc(rows * sizeof(int*));
 	for (int i = 0; i < rows; ++i) {
@@ -599,4 +632,8 @@ void dynamic_arr(int columns, int rows) {
 	}
 	//*(array2+1)指向下一个行地址
 	printf("array2[1][1]=%d,*(*(array2+1)+1)=%d\n", array2[1][1], *(*(array2 + 1) + 1));
+}
+
+void test_format() {
+	printf("hello");
 }
