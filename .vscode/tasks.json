@@ -8,7 +8,13 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "cmake",
+            "label": "delete-old-build",
+            "command": "rm -rf  ${workspaceFolder}/build/*",
+            "args": []
+        },
+        {
+            "type": "shell",
+            "label": "cmake-make",
             "command": "cmake",
             "args": [
                 ".."
@@ -24,11 +30,40 @@
             "command": "make"
         },
         {
-            "label": "Build",
+            "type": "shell",
+            "label": "cmake-ninja",
+            "command": "cmake",
+            "args": [
+                "-G",
+                "Ninja",
+                ".."
+            ]
+        },
+        {
+            "label": "ninja",
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "ninja"
+        },
+        {
+            "label": "Build-make",
             "dependsOrder": "sequence", //按列出的顺序输出依赖项
             "dependsOn": [
-                "cmake",
+                "delete-old-build",
+                "cmake-make",
                 "make"
+            ]
+        },
+        {
+            "label": "Build-ninja",
+            "dependsOrder": "sequence", //按列出的顺序输出依赖项
+            "dependsOn": [
+                "delete-old-build",
+                "cmake-ninja",
+                "ninja"
             ]
         }
     ]

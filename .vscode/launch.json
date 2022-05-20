@@ -23,9 +23,8 @@
                 }
             ],
             "targetArchitecture": "",
-            "preLaunchTask" :"Build",//指定task名称
+            "preLaunchTask" :"Build-make",//指定task名称
             "miDebuggerPath": "/usr/bin/gdb"
         }
-
     ]
 }
