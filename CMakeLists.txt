@@ -3,6 +3,11 @@ project(CPP_DEMO C CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_C_STANDARD 11)
 
+# 设置启动参数
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+# 设置编译类型
+set(CMAKE_BUILD_TYPE    Debug)
+
 # Add header file include directories
 include_directories(./test_c ./c_cpp_mix)
 
@@ -21,6 +26,6 @@ message(******** MIX_CPP_CALL_C_FILE exclude ==> "${CMAKE_CURRENT_SOURCE_DIR}/c_
 message(******** MIX_C_CALL_CPP_FILE ${MIX_C_CALL_CPP_FILE})
 message(******** MIX_CPP_CALL_C_FILE ${MIX_CPP_CALL_C_FILE})
 
-add_executable(TEST_C_MAIN run_app.c ${TEST_C})
-add_executable(MIX_C_CALL_CPP c_cpp_mix/run_c.c ${MIX_C_CALL_CPP_FILE})
-add_executable(MIX_CPP_CALL_C c_cpp_mix/run_cpp.cpp ${MIX_CPP_CALL_C_FILE})
+add_executable(TEST_C_MAIN  run_app.c ${TEST_C})
+add_executable(MIX_C_CALL_CPP   c_cpp_mix/run_c.c ${MIX_C_CALL_CPP_FILE})
+add_executable(MIX_CPP_CALL_C   c_cpp_mix/run_cpp.cpp ${MIX_CPP_CALL_C_FILE})
