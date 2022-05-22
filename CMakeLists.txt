@@ -4,9 +4,14 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_C_STANDARD 11)
 
 # 设置启动参数
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Fno-toplevel-reorder")
 # 设置编译类型
 set(CMAKE_BUILD_TYPE    Debug)
+# Release类型无法调试
+# set(CMAKE_BUILD_TYPE    Release)
+#忽略警告
+add_definitions(-w)
 
 # Add header file include directories
 include_directories(./test_c ./c_cpp_mix)

@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "test.h": "c",
+        "cstdio": "c",
+        "_itoa.h": "c",
+        "assert.h": "c",
+        "c_base_no_ptr.h": "c",
+        "stdio.h": "c",
+        "cstdarg": "c",
+        "libio.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}

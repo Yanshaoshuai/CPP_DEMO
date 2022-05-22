@@ -9,7 +9,7 @@
         {
             "type": "shell",
             "label": "delete-old-build",
-            "command": "rm -rf  ${workspaceFolder}/build/*",
+            "command": "clear && rm -rf  ${workspaceFolder}/build/*",
             "args": []
         },
         {

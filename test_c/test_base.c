@@ -1,44 +1,25 @@
 #include "test.h"
-
 #ifdef LINUX
 int MAX = 100;
 #else
 int MAX = 99;
 #endif
-char *itoa(int val, char *buf, unsigned radix)
-{
-	char *p;
-	char *firstdig;
-	char temp;
-	unsigned digval;
-	p = buf;
-	if (val < 0)
-	{
-		*p++ = '-';
-		val = (unsigned long)(-(long)val);
-	}
-	firstdig = p;
-	do
-	{
-		digval = (unsigned)(val % radix);
-		val /= radix;
-
-		if (digval > 9)
-			*p++ = (char)(digval - 10 + 'a');
-		else
-			*p++ = (char)(digval + '0');
-	} while (val > 0);
-
-	*p-- = '\0 ';
-	do
-	{
-		temp = *p;
-		*p = *firstdig;
-		*firstdig = temp;
-		--p;
-		++firstdig;
-	} while (firstdig < p);
-	return buf;
+//二进制 八进制 十六进制数
+void base_of_num(){
+	//0b前缀二进制
+	int a=0b101;
+	//0前缀八进制
+	int b=015;
+	//0x前缀
+	int c=0x2a;
+	char buff0[64];
+	char buff1[64];
+	char buff2[64];
+	printf("a=%s,b=%s,c=%s\n",itoa(a,buff0,2),itoa(b,buff1,2),itoa(c,buff2,2));
+	printf("a=%#ho, b=%#o, c=%#lo\n", a, b, c);  //以八进制形式输出
+    printf("a=%hd, b=%d, c=%ld\n", a, b, c);  //以十进制形式输出
+    printf("a=%#hx, b=%#x, c=%#lx\n", a, b, c);  //以十六进制形式输出（字母小写）
+    printf("a=%#hX, b=%#X, c=%#lX\n", a, b, c);  //以十六进制形式输出（字母大写)
 }
 void type()
 {
@@ -53,7 +34,6 @@ void type()
 	//溢出
 	printf("INT_MAX+1=%d,INT_MIN-1=%d\n", INT_MAX + 1, INT_MIN - 1);
 }
-
 void type_len()
 {
 	printf("char is take %llu byte\n", sizeof(char));
@@ -147,6 +127,16 @@ void arr_len()
 	printf("sizeof(ip)=%llu\n,sizeof(cp)=%llu\n", sizeof(ip), sizeof(cp));
 	// int 4字节 char 1字节
 	printf("sizeof(a)=%llu\n,sizeof(c)=%llu\n", sizeof(a), sizeof(c));
+
+    char arr[10];
+    printf("%d\n",sizeof(arr));
+    test_arr_in_fun(arr);
+}
+
+void test_arr_in_fun(char a[10]){//数组作为函数参数会被转成指针
+    printf("%d\n",sizeof(a));//打印指针的尺寸
+    int *p;
+    printf("%d\n",sizeof(p));
 }
 
 // loop and branch
@@ -193,7 +183,7 @@ a_label:
 }
 
 //宏
-void macro()
+void macro_test()
 {
 	printf("MAX=%d\n", MAX);
 	PRINT_HELLO;
@@ -328,28 +318,8 @@ void string_test()
 
 char *func()
 {
-	char a[] = "hello";//局部变量 在栈上分配 函数运行完释放内存
+	char a[] = "hello"; //局部变量 在栈上分配 函数运行完释放内存
 	return a;
-};
-
-// string和内存
-char *gp = "hello";	 // hello1保存在常量存储区
-char ga[] = "hello"; // hello2保存在静态存储区
-void string_memory()
-{
-	char *p = "hello";	// hello3保存在常量存储区
-	char a[] = "hello"; // hello4存储在栈上
-
-	printf("gp=%p,p=%p\n", gp, p); // gp和p指向常量存储区的同一块内存
-	// p[0] = 'a';//运行时出错 常量存储区不能修改
-	// gp[0] = 'z';//运行时出错
-	gp = a;
-	printf("p=%s,gp=%s\n", p, gp);
-	gp[0] = 'z'; //允许 此时gp指向栈上内存 允许修改
-	printf("p=%s,gp=%s\n", p, gp);
-
-	char *str = func(); 
-	// str[0]='z';//运行时出错 悬垂指针 func返回的局部变量的指针
 }
 
 size_t strlen_source(const char *str)
@@ -683,9 +653,4 @@ void dynamic_arr(int columns, int rows)
 	}
 	//*(array2+1)指向下一个行地址
 	printf("array2[1][1]=%d,*(*(array2+1)+1)=%d\n", array2[1][1], *(*(array2 + 1) + 1));
-}
-
-void test_format()
-{
-	printf("hello");
 }

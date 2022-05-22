@@ -27,7 +27,7 @@ void compare_float();
 void compare_str_len();
 void arr_len();
 void loop_branch();
-void macro();
+void macro_test();
 void const_test();
 void static_test();
 void string_test();
@@ -39,6 +39,13 @@ void void_and_null();
 void memory_test(int i);
 void dynamic_arr(int columns, int rows);
 void string_memory();
-char* itoa(int val, char* buf, unsigned radix);
+void test_ptr_trans();
+void call_func_ptr();
+void complex_ptr_and_fun();
+void struct_test();
+void base_of_num();
+char* itoa(int num, char* str, int base);
+void test_enum();
+void test_file();
 #endif // !TEST_H
 
