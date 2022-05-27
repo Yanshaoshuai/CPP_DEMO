@@ -4,6 +4,24 @@ int MAX = 100;
 #else
 int MAX = 99;
 #endif
+
+char    str_1[]="BaSiC";
+char    str_2[]="MinIX";
+
+void to_upper_lower(){
+    int i;
+    i=0;
+    do
+    {
+        str_1[i]=str_1[i]&0xDF;
+        str_2[i]=str_2[i]|0x20;
+        i++;
+    } while (i<5);
+    
+	printf("%s,%s\n",str_1,str_2);
+    return 0;
+}
+
 //二进制 八进制 十六进制数
 void base_of_num(){
 	//0b前缀二进制
@@ -439,6 +457,9 @@ void array_test()
 	int arr_0 = 0 [arr];
 	printf("%d\n", arr_0);
 	printf("%c", 5 ["abcdef"]);
+	int a_i[2][3];
+    a_i[1][2]=5;
+    printf("a_i[1][2]=%d,1[a_i][2]=%d\n",a_i[1][2],1[a_i][2]);
 }
 
 //数组不能作为返回值

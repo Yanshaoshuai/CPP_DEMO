@@ -35,6 +35,9 @@ int main()
     // struct_type();
     // function();
     // macro();
+    // to_upper_lower();
     condition_build();
+    // change_company();
+    
     return 0;
 }

@@ -271,21 +271,22 @@ cleaner_person p2;
 
 typedef struct
 {
-    int i;//4
-    char c;//1
+    int i;  // 4
+    char c; // 1
 } test_length;
 
 typedef struct
 {
-    int i;//4
-    char c;//1
-    short s;//2
+    int i;   // 4
+    char c;  // 1
+    short s; // 2
 } test_length2;
 //使用结构体和使用普通类型一样
 //只不过要尽量避免参数和返回值的拷贝==>使用指针
-cleaner_person* change_name(cleaner_person const *p){
+cleaner_person *change_name(cleaner_person const *p)
+{
     //结构体指针p->name是简便写法
-    strncpy(p->name,"yss",4);
+    strncpy(p->name, "yss", 4);
     //与上面写法等价
     // strncpy((*p).name,"yss",4);
     return p;
@@ -306,28 +307,62 @@ void struct_test()
 
     cleaner_person person_1;
     cleaner_person person_2;
-    person_2.age=100;
-    strncpy(person_2.name,"yanshaoshuai",13);
-    person_1=person_2;
-    printf("%d,%s\n",person_1.age,person_1.name);
-    printf("%d,%s\n",person_2.age,person_2.name);
+    person_2.age = 100;
+    strncpy(person_2.name, "yanshaoshuai", 13);
+    person_1 = person_2;
+    printf("%d,%s\n", person_1.age, person_1.name);
+    printf("%d,%s\n", person_2.age, person_2.name);
     /* if (person_1==person_2){//结构体不支持比较
         printf("person_1==person_2\n");
     } */
-    cleaner_person* p= change_name(&person_2);
-    printf("%d,%s\n",person_2.age,person_2.name);
-    printf("%d,%s\n",p->age,p->name);
+    cleaner_person *p = change_name(&person_2);
+    printf("%d,%s\n", person_2.age, person_2.name);
+    printf("%d,%s\n", p->age, p->name);
+}
+
+struct company
+{
+    char cn[3];
+    char hn[9];
+    int pm;
+    int sr;
+    char cp[3];
+};
+
+struct company dec = {"DEC", "Ken Olsen", 137, 40, "PDP"};
+
+void change_company()
+{
+    int i;
+    dec.pm = 38;
+    dec.sr = dec.sr + 70;
+    i = 0;
+    dec.cp[i] = 'V';
+    i++;
+    dec.cp[i] = 'A';
+    i++;
+    dec.cp[i] = 'X';
 }
 
 //枚举
-enum DAY{MON=1,TUE,WED,THU,FRI,SAT,SUN};
-void test_enum(){
+enum DAY
+{
+    MON = 1,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN
+};
+void test_enum()
+{
     enum DAY today;
-    today=MON;
-    today=2;
-    printf("%d\n",today);
+    today = MON;
+    today = 2;
+    printf("%d\n", today);
     // printf("%s\n",today);
     enum DAY next_day;
-    next_day=MON;
-    printf("%d\n",next_day);
+    next_day = MON;
+    printf("%d\n", next_day);
 }

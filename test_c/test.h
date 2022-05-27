@@ -47,5 +47,6 @@ void base_of_num();
 char* itoa(int num, char* str, int base);
 void test_enum();
 void test_file();
+void to_upper_lower();
 #endif // !TEST_H
 
