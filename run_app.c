@@ -36,8 +36,8 @@ int main()
     // function();
     // macro();
     // to_upper_lower();
-    condition_build();
+    // condition_build();
     // change_company();
-    
+    bit_test_base();
     return 0;
 }
