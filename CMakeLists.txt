@@ -18,6 +18,7 @@ include_directories(./test_c ./c_cpp_mix)
 
 # 设置编译包含的文件
 file(GLOB_RECURSE TEST_C "test_c/*.c")
+file(GLOB_RECURSE CSAPP "csapp/*.c")
 file(GLOB_RECURSE MIX_C_CALL_CPP_FILE  "c_cpp_mix/*.c" "c_cpp_mix/*.cpp" EXCEPT "c_cpp_mix/run_cpp.cpp")
 file(GLOB_RECURSE MIX_CPP_CALL_C_FILE  "c_cpp_mix/*.c" "c_cpp_mix/*.cpp" EXCEPT "c_cpp_mix/run_c.c")
 
@@ -31,6 +32,7 @@ message(******** MIX_CPP_CALL_C_FILE exclude ==> "${CMAKE_CURRENT_SOURCE_DIR}/c_
 message(******** MIX_C_CALL_CPP_FILE ${MIX_C_CALL_CPP_FILE})
 message(******** MIX_CPP_CALL_C_FILE ${MIX_CPP_CALL_C_FILE})
 
+add_executable(CSAPP_MAIN ${CSAPP})
 add_executable(TEST_C_MAIN  run_app.c ${TEST_C})
 add_executable(MIX_C_CALL_CPP   c_cpp_mix/run_c.c ${MIX_C_CALL_CPP_FILE})
 add_executable(MIX_CPP_CALL_C   c_cpp_mix/run_cpp.cpp ${MIX_CPP_CALL_C_FILE})
