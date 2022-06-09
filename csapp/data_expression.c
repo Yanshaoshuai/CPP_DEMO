@@ -181,7 +181,6 @@ void test_eq()
  */
 void move_bit()
 {
-
     // x=[0110 0011] y=[1001 0101]
     unsigned char x = 0x63;
     unsigned char y = 0x95;
@@ -193,9 +192,10 @@ void move_bit()
     printf("x>>4=%.2x,y>>4=%.2x\n", ((unsigned char)(x >> 4)), ((unsigned char)(y >> 4)));
 
     //有符号数只有算术右移(c只有算术右移=>每字节高位用符号位补齐)
+    // a=[0110 0011] b=[1001 0101](-107的补码)
     int a = 0x63;
-    int b = 0x95;
+    int b = -107; //-128+16+4+1=-107
     //逻辑右移4位[0000 0110] [1111 1001]
-    // printf("a=%.2x,b=%.2x\n",((unsigned int)a), ((unsigned int)b));
-    printf("a>>4=%x,b>>4=%x\n", a >> 4, b >> 4);
+    printf("a=%.2x,b=%.2x\n", ((unsigned char)a), ((unsigned char)b));
+    printf("a>>4=%.2x,b>>4=%.2x\n", ((unsigned char)(a >> 4)), ((unsigned char)(b >> 4)));
 }
