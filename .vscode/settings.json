@@ -8,7 +8,9 @@
         "stdio.h": "c",
         "cstdarg": "c",
         "libio.h": "c",
-        "csapp.h": "c"
+        "csapp.h": "c",
+        "limits": "c",
+        "type_traits": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
