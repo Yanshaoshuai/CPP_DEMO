@@ -191,11 +191,136 @@ void move_bit()
     //右移4位[0000 0110] [0011 1001]
     printf("x>>4=%.2x,y>>4=%.2x\n", ((unsigned char)(x >> 4)), ((unsigned char)(y >> 4)));
 
-    //有符号数只有算术右移(c只有算术右移=>每字节高位用符号位补齐)
+    //有符号数只有算术右移(c只有算术右移=>高位用符号位补齐)
     // a=[0110 0011] b=[1001 0101](-107的补码)
     int a = 0x63;
     int b = -107; //-128+16+4+1=-107
     //逻辑右移4位[0000 0110] [1111 1001]
     printf("a=%.2x,b=%.2x\n", ((unsigned char)a), ((unsigned char)b));
     printf("a>>4=%.2x,b>>4=%.2x\n", ((unsigned char)(a >> 4)), ((unsigned char)(b >> 4)));
+}
+
+void type_convert()
+{
+    //相同长度整数 类型转换，底层位表示不变数值改变
+    int x = -12345;
+    unsigned y = x;
+    printf("x=%d,y=%u\n", x, y);
+    show_bytes((byte_pointer)&x, 4);
+    show_bytes((byte_pointer)&y, 4);
+    unsigned a = UINT_MAX;
+    int b = a;
+    printf("a=%u,b=%d\n", a, b);
+    show_bytes((byte_pointer)&a, 4);
+    show_bytes((byte_pointer)&b, 4);
+
+    //不同长度整数 类型转换
+    // 1.小转大 数值不变符号位填充
+    //整数
+    char c = 41;
+    int ci = c;
+    printf("c=");
+    show_bytes((byte_pointer)&c, 1);
+    printf("ci=");
+    show_bytes((byte_pointer)&ci, 4);
+    //负数
+    char cn = -41;
+    int cni = cn;
+    printf("c=");
+    show_bytes((byte_pointer)&cn, 1);
+    printf("ci=");
+    show_bytes((byte_pointer)&cni, 4);
+    //大转小 截断高位，保留低位
+    unsigned ux = 129;
+    char cux = ux;
+    int ix = -129;
+    char cix = ix;
+    printf("ux=");
+    show_bytes((byte_pointer)&ux, 4);
+    printf("cux=");
+    show_bytes((byte_pointer)&cux, 1);
+    printf("ix=");
+    show_bytes((byte_pointer)&ix, 4);
+    printf("cix=");
+    show_bytes((byte_pointer)&cix, 1);
+
+    //既有有符号和无符号转换又有长度大小转换 先进行长度大小转换再进行有符号数无符号数转换
+    short sx = -12345;
+    unsigned uy = sx; //<=> (unsigned)(int)sx
+    printf("sx=");
+    show_bytes((byte_pointer)&sx, 2);
+    printf("uy=");
+    show_bytes((byte_pointer)&uy, 4);
+}
+
+// get_last_unsigned
+int fun1(unsigned word)
+{
+    return (int)((word << 24) >> 24);
+}
+// get_last_sign
+int fun2(unsigned word)
+{
+    return ((int)word << 24) >> 24;
+}
+
+void test_2_23()
+{
+    printf("fun1(0x00000076)=%d\n", fun1(0x00000076));
+    printf("fun1(0x87654321)=%d\n", fun1(0x87654321));
+    printf("fun1(0x000000C9)=%d\n", fun1(0x000000C9));
+    printf("fun1(0xEDCBA987)=%d\n", fun1(0xEDCBA987));
+
+    printf("fun2(0x00000076)=%d\n", fun2(0x00000076));
+    printf("fun2(0x87654321)=%d\n", fun2(0x87654321));
+    printf("fun2(0x000000C9)=%d\n", fun2(0x000000C9));
+    printf("fun2(0xEDCBA987)=%d\n", fun2(0xEDCBA987));
+}
+
+float sum_elements(float a[], unsigned length)
+{
+    int i;
+    float result = 0;
+    unsigned x = length - 1; // 0-1溢出为UINT_MAX
+    unsigned umax = UINT_MAX;
+    for (i = 0; i <= length - 1; i++)
+    {
+        result += a[i];
+    }
+    return result;
+}
+float sum_elements_upgrade(float a[], int length)
+{
+    int i;
+    float result = 0;
+    unsigned x = length - 1; // 0-1溢出为UINT_MAX
+    unsigned umax = UINT_MAX;
+    for (i = 0; i <= length - 1; i++)
+    {
+        result += a[i];
+    }
+    return result;
+}
+void test_sum_elements()
+{
+    float a[] = {};
+    // sum_elements(a,0);
+    sum_elements_upgrade(a, 0);
+}
+
+size_t strlen(const char *s);
+
+int strlonger(char *s, char *t)
+{
+    return strlen(s) - strlen(t)>0;//len(s)<len(t)时会溢出
+}
+int strlonger_upgrade(char *s, char *t)
+{
+    return strlen(s) > strlen(t);
+}
+void test_strlonger(){
+    char* a="123";
+    char* b="4567";
+    // printf("len(a)-len(b)>0 is %d",strlonger(a,b));
+    printf("len(a)>len(b) is %d\n",strlonger_upgrade(a,b));
 }
