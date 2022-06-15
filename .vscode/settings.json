@@ -10,7 +10,8 @@
         "libio.h": "c",
         "csapp.h": "c",
         "limits": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "limits.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -312,15 +312,73 @@ size_t strlen(const char *s);
 
 int strlonger(char *s, char *t)
 {
-    return strlen(s) - strlen(t)>0;//len(s)<len(t)时会溢出
+    return strlen(s) - strlen(t) > 0; // len(s)<len(t)时会溢出
 }
 int strlonger_upgrade(char *s, char *t)
 {
     return strlen(s) > strlen(t);
 }
-void test_strlonger(){
-    char* a="123";
-    char* b="4567";
+void test_strlonger()
+{
+    char *a = "123";
+    char *b = "4567";
     // printf("len(a)-len(b)>0 is %d",strlonger(a,b));
-    printf("len(a)>len(b) is %d\n",strlonger_upgrade(a,b));
+    printf("len(a)>len(b) is %d\n", strlonger_upgrade(a, b));
+}
+
+int tadd_ok(int x, int y)
+{
+    int r = x + y;
+    //溢出
+    if (x > 0 && y > 0 && r < 0 || x < 0 && y < 0 && r >= 0)
+    {
+        return 0;
+    }
+    //不会溢出
+    return 1;
+}
+//不可取
+//因为就算溢出(sum-x==y)&&(sum-y==x)也成立
+//如果x+y溢出 那么sum-x和sum-y也会溢出最终得到y和x
+int tadd_ok2(int x, int y)
+{
+    int sum = x + y;
+    return (sum - x == y) && (sum - y == x);
+}
+
+int tsub_ok(int x, int y)
+{
+    //-INT_MIN==INT_MIN
+    printf("-INT_MIN==INT_MIN is %d\n", -INT_MIN == INT_MIN);
+    if (y == INT_MIN)
+    {
+        if (x < 0)
+        { //负数加上负的最大负整数不会溢出
+            return 1;
+        }
+        //非负数加上负的最大负整数会溢出 0也会 因为-INT_MIN没有整数与之对应会溢出为INT_MIN
+        return 0;
+    }
+    return tadd_ok(x, -y);
+}
+
+int tmult_ok(int x, int y)
+{
+    int p = x * y;
+    //与 add、mul 和 imul 指令不同，Intel 除法指令 div 和 idiv 不设置溢出标志； 
+    //如果源操作数（除数）为零或商对于指定的寄存器来说太大，它们会产生除法错误。
+    //所以INT_MIN/-1会产生除0异常 所以需要单独判断
+    if(x<0&&y<0&&p<0){
+        return 0;
+    }
+    // p=x*y q=p/x
+    // x*y=p+t*2^w (溢出时t!=0)
+    // p=x*q+r (|r|<|x|)
+
+    //不溢出时
+    // x*y=p=x*q+r=p/x+r
+    //=>q=y<=>r=t=0
+    int a=p/x;
+    
+    return !x || (p / x) == y;
 }
