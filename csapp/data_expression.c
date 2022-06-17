@@ -382,3 +382,16 @@ int tmult_ok(int x, int y)
     
     return !x || (p / x) == y;
 }
+
+void test_stack_heap(){
+    int a=1;
+    int b=a-1;
+    int* p=(int*)malloc(1000*sizeof(int));
+    int* q=(int*)malloc(1000*sizeof(int));
+    printf("&a=%p\n",&a);
+    printf("&b=%p\n",&b);
+    printf("p=%p\n",p);
+    printf("q=%p\n",q);
+    printf("&p=%p\n",&p);
+    printf("&q=%p\n",&q);
+}
