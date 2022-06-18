@@ -382,7 +382,45 @@ int tmult_ok(int x, int y)
     
     return !x || (p / x) == y;
 }
+int div16WithCompare(int x){
+    return x<0?(x+(1<<4)-1)>>4:x>>4;
+}
+/**
+ * 2.42
+ * 除以16 正数向下取整 负数向上取整
+ * 不用任何判断循环比较实现
+ */
+int div16(int x){
+    int bias=(x>>31)&0xF;//低16位负数全1(2^4 -1) 正数全0
+    return (x+bias)>>4;
+}
 
+
+void test_float(){
+    //0000803f  s=0 e=00 f=000803f  非规格化
+    //E=1-127=-126 M=f=0.000803f
+    //V=(-1)^s*M*2^E=0.000803f*2^-126
+    float a=1;
+    //0000a03f
+    float b=1.25;
+    //00000000
+    float c=0;
+    printf("a=%.100f\n",a);
+    printf("b=%.100f\n",b);
+    printf("c=%.100f\n",c);
+    printf("a=1=");
+    show_bytes(&a,sizeof(float));
+    printf("\n");
+    printf("b=1.25=");
+    show_bytes(&b,sizeof(float));
+    printf("\n");
+    printf("c=0=");
+    show_bytes(&c,sizeof(float));
+    printf("\n");
+}
+
+
+// todo
 void test_stack_heap(){
     int a=1;
     int b=a-1;

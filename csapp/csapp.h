@@ -23,4 +23,6 @@
     int  tadd_ok2(int,int);
     int tsub_ok(int x,int y);
     int tmult_ok(int x, int y);
+    int div16(int x);
+    void test_float();
 #endif 
