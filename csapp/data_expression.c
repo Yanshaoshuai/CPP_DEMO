@@ -365,10 +365,11 @@ int tsub_ok(int x, int y)
 int tmult_ok(int x, int y)
 {
     int p = x * y;
-    //与 add、mul 和 imul 指令不同，Intel 除法指令 div 和 idiv 不设置溢出标志； 
+    //与 add、mul 和 imul 指令不同，Intel 除法指令 div 和 idiv 不设置溢出标志；
     //如果源操作数（除数）为零或商对于指定的寄存器来说太大，它们会产生除法错误。
     //所以INT_MIN/-1会产生除0异常 所以需要单独判断
-    if(x<0&&y<0&&p<0){
+    if (x < 0 && y < 0 && p < 0)
+    {
         return 0;
     }
     // p=x*y q=p/x
@@ -378,58 +379,101 @@ int tmult_ok(int x, int y)
     //不溢出时
     // x*y=p=x*q+r=p/x+r
     //=>q=y<=>r=t=0
-    int a=p/x;
-    
+    int a = p / x;
+
     return !x || (p / x) == y;
 }
-int div16WithCompare(int x){
-    return x<0?(x+(1<<4)-1)>>4:x>>4;
+int div16WithCompare(int x)
+{
+    return x < 0 ? (x + (1 << 4) - 1) >> 4 : x >> 4;
 }
 /**
  * 2.42
  * 除以16 正数向下取整 负数向上取整
  * 不用任何判断循环比较实现
  */
-int div16(int x){
-    int bias=(x>>31)&0xF;//低16位负数全1(2^4 -1) 正数全0
-    return (x+bias)>>4;
+int div16(int x)
+{
+    int bias = (x >> 31) & 0xF; //低16位负数全1(2^4 -1) 正数全0
+    return (x + bias) >> 4;
 }
 
+/**
+ * 打印浮点数(float)二进制表示
+ */
+typedef union
+{
+    float f;
+    u_int32_t u;
+} flat_union;
+void show_ieee754(float f)
+{
+    flat_union fu = {.f = f};
+    int i = sizeof f * CHAR_BIT;
 
-void test_float(){
-    //0000803f  s=0 e=00 f=000803f  非规格化
-    //E=1-127=-126 M=f=0.000803f
-    //V=(-1)^s*M*2^E=0.000803f*2^-126
-    float a=1;
-    //0000a03f
-    float b=1.25;
-    //00000000
-    float c=0;
-    printf("a=%.100f\n",a);
-    printf("b=%.100f\n",b);
-    printf("c=%.100f\n",c);
+    printf("  ");
+    while (i--)
+        printf("%d ", (fu.u >> i) & 0x1);
+
+    putchar('\n');
+    printf(" |- - - - - - - - - - - - - - - - - - - - - - "
+           "- - - - - - - - - -|\n");
+    printf(" |s|      exp      |                  mantissa"
+           "                   |\n\n");
+}
+void test_float()
+{
+    //阶码不全0也不全1 规格化 E=e-Bais M=1+f
+    // 0000803f=>0x3f800000=0011 1111 1=>s=0 e=0111 1111 f=0.0
+    // E=127-127=0 M=f=1+0.0=1
+    // V=(-1)^s*M*2^E=1
+    float a = 1;
+    // 0000a03f=>0x3fa00000=0011 1111 1010=>s=0 e=01111111 f=0.010
+    // E=127-127=0 M=1+0.010=1.25
+    // V=1.25
+    float b = 1.25;
+
+    //阶码全0 非规格化 E=1-Bais M=f
+    // 00000000 =>s=0 M=f=0 E=1-127=-126
+    // V=(-1)^s*M*2^E
+    float c = 0;
+
+    //阶码全1 特殊值 s=0 f=0=>正无穷 s=1 f=0=>负无穷 f!=0=>NaN
+    // 0000ff4e =>0100 0111 1111 1111
+    flat_union d={.u=(UINT_MAX<<24)>>1};
+    flat_union e={.u=UINT_MAX<<23};
+    flat_union f={.u=UINT_MAX};
     printf("a=1=");
-    show_bytes(&a,sizeof(float));
+    show_float(a);
     printf("\n");
     printf("b=1.25=");
-    show_bytes(&b,sizeof(float));
+    show_float(b);
     printf("\n");
     printf("c=0=");
-    show_bytes(&c,sizeof(float));
+    show_float(c);
+    printf("\n");
+    printf("d=%f\n",d.f);
+    show_float(d.f);
+    printf("\n");
+    printf("e=%f\n",e.f);
+    show_float(e.f);
+    printf("\n");
+    printf("f=%f\n",f.f);
+    show_float(f.f);
     printf("\n");
 }
 
-
 // todo
-void test_stack_heap(){
-    int a=1;
-    int b=a-1;
-    int* p=(int*)malloc(1000*sizeof(int));
-    int* q=(int*)malloc(1000*sizeof(int));
-    printf("&a=%p\n",&a);
-    printf("&b=%p\n",&b);
-    printf("p=%p\n",p);
-    printf("q=%p\n",q);
-    printf("&p=%p\n",&p);
-    printf("&q=%p\n",&q);
+void test_stack_heap()
+{
+    int a = 1;
+    int b = a - 1;
+    int *p = (int *)malloc(1000 * sizeof(int));
+    int *q = (int *)malloc(1000 * sizeof(int));
+    printf("&a=%p\n", &a);
+    printf("&b=%p\n", &b);
+    printf("p=%p\n", p);
+    printf("q=%p\n", q);
+    printf("&p=%p\n", &p);
+    printf("&q=%p\n", &q);
 }

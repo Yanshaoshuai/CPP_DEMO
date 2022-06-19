@@ -4,6 +4,7 @@
     #include<stdlib.h>
     #include<string.h>
     #include<limits.h>
+    #include<math.h>
     void pointer_len();
     void byte_order();
     void test_show_bytes(int);
