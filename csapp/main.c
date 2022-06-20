@@ -29,7 +29,8 @@ int main(int argc, char const *argv[])
     // printf("div16(-16)=%d\n",div16(-16));
     // printf("div16(-33)=%d\n",div16(-33));
 
-    test_float();
+    // test_float();
+    round_test();
     // test_stack_heap();
 
     return 0;

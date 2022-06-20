@@ -463,6 +463,34 @@ void test_float()
     printf("\n");
 }
 
+/**
+ * 浮点数舍入
+ */
+void round_test(){
+    //向偶舍入
+    printf("round-to-even 1.5=%.0f\n",1.5);
+    printf("round-to-even 2.5=%.0f\n",2.5);
+    //向0舍入
+    printf("round-to-zero 1.5=%d\n",(int)1.5);
+    printf("round-to-zero 2.5=%d\n",(int)2.5);
+    printf("round-to-zero -1.5=%d\n",(int)-1.5);
+    //向上舍入
+    printf("round-to-ceil 1.5=%.0f\n",ceil(1.5));
+    printf("round-to-ceil 2.5=%.0f\n",ceil(2.5));
+    printf("round-to-ceil -1.5=%.0f\n",ceil(-1.5));
+    //向下舍入
+    printf("round-to-floor 1.5=%.0f\n",floor(1.5));
+    printf("round-to-floor 2.5=%.0f\n",floor(2.5));
+    printf("round-to-floor -1.5=%.0f\n",floor(-1.5));
+    //四舍五入 非IEEE754舍入
+    printf("normal-round 1.4=%.0f\n",round(1.4));
+    printf("normal-round 1.5=%.0f\n",round(1.5));
+    printf("normal-round 1.6=%.0f\n",round(1.6));
+    printf("normal-round -1.4=%.0f\n",round(-1.5));
+    printf("normal-round -1.5=%.0f\n",round(-1.5));
+    printf("normal-round -1.6=%.0f\n",round(-1.6));
+}
+
 // todo
 void test_stack_heap()
 {

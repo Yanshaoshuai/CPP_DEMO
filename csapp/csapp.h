@@ -26,4 +26,5 @@
     int tmult_ok(int x, int y);
     int div16(int x);
     void test_float();
+    void round_test();
 #endif 
