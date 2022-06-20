@@ -482,11 +482,11 @@ void round_test(){
     printf("round-to-floor 1.5=%.0f\n",floor(1.5));
     printf("round-to-floor 2.5=%.0f\n",floor(2.5));
     printf("round-to-floor -1.5=%.0f\n",floor(-1.5));
-    //四舍五入 非IEEE754舍入
+    //四舍五入 非IEEE754标准舍入方法
     printf("normal-round 1.4=%.0f\n",round(1.4));
     printf("normal-round 1.5=%.0f\n",round(1.5));
     printf("normal-round 1.6=%.0f\n",round(1.6));
-    printf("normal-round -1.4=%.0f\n",round(-1.5));
+    printf("normal-round -1.4=%.0f\n",round(-1.4));
     printf("normal-round -1.5=%.0f\n",round(-1.5));
     printf("normal-round -1.6=%.0f\n",round(-1.6));
 }
