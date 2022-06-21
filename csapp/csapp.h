@@ -27,4 +27,5 @@
     int div16(int x);
     void test_float();
     void round_test();
+    void test_float_calculate();
 #endif 

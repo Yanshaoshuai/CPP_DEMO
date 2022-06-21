@@ -491,6 +491,38 @@ void round_test(){
     printf("normal-round -1.6=%.0f\n",round(-1.6));
 }
 
+/**
+ * 浮点数计算
+ */
+void test_float_calculate(){
+    //加法
+    //不满足结合律
+    float a=(3.14+1e20)-1e20;
+    float b=3.14+(1e20-1e20);
+    printf("a=%f\n",a);
+    printf("b=%f\n",b);
+    //满足交换律
+    float c=3.14+1e20;
+    float d=1e20+3.14;
+    printf("c=%f\n",c);
+    printf("d=%f\n",d);
+    //逆元
+    float x=3.14;
+    float n_x=-x;
+    printf("x+n_x=%f\n",x+n_x);
+    //单调性
+    printf("3.14+1e40>3.14 is %d\n",3.14+1e40>3.14);
+
+    //乘法
+    //不满足结合律
+    printf("(3.14*1e20)*1e20==3.14*(1e20*1e20) is %d\n",(3.14*1e20)*1e20==3.14*(1e20*1e20));
+    //满足交换律
+    printf("3.14*1e20==1e20*3.14 is %d\n",3.14*1e20==1e20*3.14);
+    //不具有分配性
+    printf("1e20*(1e20-1e30)==1e20*1e20-1e20*1e30 is %d\n",1e20*(1e20-1e30)==1e20*1e20-1e20*1e30);
+
+}
+
 // todo
 void test_stack_heap()
 {
